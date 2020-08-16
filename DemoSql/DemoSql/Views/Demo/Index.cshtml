@@ -1,0 +1,128 @@
+﻿@model IEnumerable<DemoSql.Models.demoDB>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        This chart shows how data labels can be added to the data series. This
+        can increase readability and comprehension for small datasets.
+    </p>
+</figure>
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Stock Market'
+        },
+
+        xAxis: {
+            categories: [@foreach (var item in Model)
+            {
+                @item.date
+            }]
+        },
+        
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'open',
+            data: [@foreach (var item in Model)
+            {
+                @item.open
+            }]
+        }, {
+            name: 'close',
+            data: [@foreach (var item in Model)
+            {
+                @item.close
+            }]
+        }]
+    });
+</script>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trade_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.high)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.low)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.open)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.close)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.volume)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.trade_code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.high)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.low)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.open)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.close)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.volume)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

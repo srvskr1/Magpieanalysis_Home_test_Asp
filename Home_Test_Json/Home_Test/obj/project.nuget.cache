@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "908GPJxSwAsWU6StQfpzZey0nPGu0gboXZ9D8KAZu/hZltLjk2ovMtBPUjnzEC5/DzOa7zOfMuG65nt8YLFRBA==",
+  "success": true,
+  "projectFilePath": "E:\\Study\\magpie home test\\Home_Test\\Home_Test\\Home_Test.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sourav\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

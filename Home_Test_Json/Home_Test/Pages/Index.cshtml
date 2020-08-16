@@ -1,0 +1,78 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Magpie Analitics</h1>
+    
+</div>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        
+        text-align: center;
+    }
+</style>
+<div>
+    <h2>
+        <table align="center">
+            <th>
+                Date
+            </th>
+            <th>
+                Trade Code
+            </th>
+            <th>
+                High
+            </th>
+            <th>
+                Low
+            </th>
+            <th>
+                Open
+            </th>
+            <th>
+                Close
+            </th>
+            <th>
+                Action
+            </th>
+
+            @foreach (var data1 in Model.data)
+            {
+                <tr>
+
+
+                    <td>
+                        @data1.date
+                    </td>
+                    <td>
+                        @data1.trade_code
+                    </td>
+                    <td>
+                        @data1.high
+                    </td>
+                    <td>
+                        @data1.low
+                    </td>
+                    <td>
+                        @data1.open
+                    </td>
+                    <td>
+                        @data1.close
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </h2>
+</div>
+
